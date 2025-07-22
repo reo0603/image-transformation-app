@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Slider } from "@/components/ui/slider" // Assuming shadcn/ui slider is available
 import ImageCompareSlider from "@/components/image-compare-slider" // Import the new component
+import Footer from "@/components/footer"
 import {
   Loader2,
   ImageIcon,
@@ -332,51 +333,18 @@ export default function ImageTransformationPage() {
               </div>
 
               {originalImagePreview && (
-                <>
-                  {/* <div className="grid gap-4">
-                    <div className="grid gap-2">
-                      <Label htmlFor="brightness-slider" className="text-gray-300">
-                        Brightness: {brightness}%
-                      </Label>
-                      <Slider
-                        id="brightness-slider"
-                        min={0}
-                        max={200}
-                        step={1}
-                        value={[brightness]}
-                        onValueChange={([val]) => setBrightness(val)}
-                        className="[&>span:first-child]:h-1 [&>span:first-child]:bg-gray-600 [&>span:first-child]:dark:bg-gray-700 [&>span]:bg-purple-500 [&>span]:dark:bg-purple-400 [&>span]:h-1 [&>span]:w-5 [&>span]:rounded-full"
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="contrast-slider" className="text-gray-300">
-                        Contrast: {contrast}%
-                      </Label>
-                      <Slider
-                        id="contrast-slider"
-                        min={0}
-                        max={200}
-                        step={1}
-                        value={[contrast]}
-                        onValueChange={([val]) => setContrast(val)}
-                        className="[&>span:first-child]:h-1 [&>span:first-child]:bg-gray-600 [&>span:first-child]:dark:bg-gray-700 [&>span]:bg-purple-500 [&>span]:dark:bg-purple-400 [&>span]:h-1 [&>span]:w-5 [&>span]:rounded-full"
-                      />
-                    </div>
-                  </div> */}
-
-                  <div className="mt-6 flex justify-center">
-                    {originalImagePreview && enhancedImageBase64 && (
-                      <ImageCompareSlider
-                        beforeImageSrc={originalImagePreview}
-                        afterImageSrc={enhancedImageBase64}
-                        width={500} // Adjust as needed
-                        height={300} // Adjust as needed
-                      />
-                    )}
-                    {/* Hidden canvas for image processing */}
-                    <canvas ref={canvasRef} className="hidden" />
-                  </div>
-                </>
+                <div className="mt-6 flex justify-center">
+                  {originalImagePreview && enhancedImageBase64 && (
+                    <ImageCompareSlider
+                      beforeImageSrc={originalImagePreview}
+                      afterImageSrc={enhancedImageBase64}
+                      width={500} // Adjust as needed
+                      height={300} // Adjust as needed
+                    />
+                  )}
+                  {/* Hidden canvas for image processing */}
+                  <canvas ref={canvasRef} className="hidden" />
+                </div>
               )}
               {error && <div className="text-red-400 text-center mt-4 font-medium">{error.message}</div>}
 
@@ -702,6 +670,7 @@ export default function ImageTransformationPage() {
           </Tabs>
         </CardContent>
       </Card>
+      <Footer />
     </main>
   )
 }
